@@ -1,0 +1,4 @@
+# GitHub Pages configuration
+baseUrl: ""
+buildCommand: npm run build:github
+publishDir: out

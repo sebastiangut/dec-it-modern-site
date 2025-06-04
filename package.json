@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:netlify": "next build",
+    "build:github": "next build",
     "start": "next start",
     "lint": "next lint",
     "generate-sitemap": "node scripts/generate-sitemap.js",
