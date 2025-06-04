@@ -6,7 +6,7 @@
   publish = "out"
   
   # Node.js version
-  environment = { NODE_VERSION: "18" }
+  environment.NODE_VERSION = "18"
 
 [build.environment]
   # Next.js specific environment variables
@@ -18,7 +18,8 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = {Role: ["admin"]}
+  [redirects.conditions]
+    Role = ["admin"]
 
 # Headers for security and performance
 [[headers]]
