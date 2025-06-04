@@ -1,0 +1,123 @@
+[build]
+  # Build command for Next.js
+  command = "npm run build"
+  
+  # Output directory for static export
+  publish = "out"
+  
+  # Node.js version
+  environment = { NODE_VERSION = "18" }
+
+[build.environment]
+  # Next.js specific environment variables
+  NEXT_TELEMETRY_DISABLED = "1"
+  NODE_ENV = "production"
+
+# Redirect rules for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Romanian language redirects
+[[redirects]]
+  from = "/en/*"
+  to = "/:splat"
+  status = 301
+
+# SEO redirects for common misspellings
+[[redirects]]
+  from = "/dec-it"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/decit"
+  to = "/"
+  status = 301
+
+# Legal pages redirects
+[[redirects]]
+  from = "/privacy"
+  to = "/legal/confidentialitate"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/legal/termeni"
+  status = 301
+
+[[redirects]]
+  from = "/cookies"
+  to = "/legal/cookies"
+  status = 301
+
+# Solutions redirects
+[[redirects]]
+  from = "/access-control"
+  to = "/solutii/control-acces"
+  status = 301
+
+[[redirects]]
+  from = "/video-surveillance"
+  to = "/solutii/supraveghere-video"
+  status = 301
+
+[[redirects]]
+  from = "/ticketing"
+  to = "/solutii/ticketing"
+  status = 301
+
+# Industry redirects
+[[redirects]]
+  from = "/hotels"
+  to = "/industrii/hoteluri"
+  status = 301
+
+[[redirects]]
+  from = "/healthcare"
+  to = "/industrii/sanatate"
+  status = 301
+
+[[redirects]]
+  from = "/events"
+  to = "/industrii/evenimente"
+  status = 301
+
+# Form handling (if you add contact forms later)
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact"
+  status = 200
+
+# 404 page
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

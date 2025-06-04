@@ -5,9 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:netlify": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "export": "next export",
+    "analyze": "cross-env ANALYZE=true next build",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

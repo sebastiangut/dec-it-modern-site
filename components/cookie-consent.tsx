@@ -19,8 +19,8 @@ export default function CookieConsent() {
     localStorage.setItem('cookieConsent', 'accepted')
     setShowConsent(false)
     // Initialize analytics here
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
         'analytics_storage': 'granted'
       })
     }
@@ -30,8 +30,8 @@ export default function CookieConsent() {
     localStorage.setItem('cookieConsent', 'declined')
     setShowConsent(false)
     // Disable analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
         'analytics_storage': 'denied'
       })
     }
